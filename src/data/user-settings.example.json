@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "lastPlayerGod": "zeus",
+  "lastOpponentGod": "set",
+  "lastFootprintState": "default",
+  "pinsByOpponentGod": {
+    "_comment": "Optional power-user customization. Keyed by opponent god id. An ordered list of unit ids overriding the default threat priority order from counter-data.json for that opponent. Absent keys fall back to the shipped defaults.",
+    "set": ["eg_axeman", "eg_spearman", "eg_war_elephant"]
+  }
+}

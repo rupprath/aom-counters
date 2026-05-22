@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AOM Counters — companion app · design</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    /* ------------ Stateful artboards (each holds its own little app) ----- */
+
+    /* Wide strip showing every threat + Set's myth pool */
+    function StripFullArtboard() {
+      return (
+        <div style={{ padding: 24 }} className="bg-gameplay" data-screen-label="01 Strip · full">
+          <StripState
+            player={GODS.zeus}
+            opponent={GODS.set}
+            onCollapse={() => {}}
+            onSetup={() => {}}
+            showMyth
+          />
+        </div>
+      );
+    }
+
+    /* Setup screen, first-launch (no gods picked yet) */
+    function SetupFirstLaunchArtboard() {
+      const [player, setPlayer] = React.useState(null);
+      const [opponent, setOpponent] = React.useState(null);
+      return (
+        <div style={{ padding: 24, display: "grid", placeItems: "center", height: "100%" }}
+             className="bg-gameplay" data-screen-label="02 Setup · first launch">
+          <SetupState
+            firstLaunch
+            player={player}
+            opponent={opponent}
+            onPick={(slot, godId) => slot === "player" ? setPlayer(GODS[godId]) : setOpponent(GODS[godId])}
+            onConfirm={() => {}}
+            onClose={() => {}}
+          />
+        </div>
+      );
+    }
+
+    /* ----- Designer note panel for the canvas -------- */
+
+    function DesignNote() {
+      return (
+        <div style={{
+          width: 480, padding: 22, background: "rgba(255,255,255,0.94)",
+          border: "1px solid rgba(0,0,0,0.08)", borderRadius: 10,
+          color: "#3a322a", fontFamily: "var(--font-ui)",
+          fontSize: 13, lineHeight: 1.55,
+        }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10,
+                        letterSpacing: "0.14em", textTransform: "uppercase",
+                        color: "rgba(60,50,40,0.6)", marginBottom: 10 }}>
+            Direction · v0.2
+          </div>
+          <h2 style={{ margin: "0 0 8px", fontSize: 19, fontWeight: 600 }}>
+            Horizontal strip, paired columns
+          </h2>
+          <p style={{ margin: "0 0 12px" }}>
+            One thin, wide overlay that sits along the top or bottom of the
+            screen. Two rows — <b>Enemy uses</b> on top, <b>Counter with</b> on
+            the bottom — and each <b>column</b> is a matchup pair: the unit
+            directly above tells you who's coming, the unit directly below
+            tells you what to queue.
+          </p>
+          <p style={{ margin: "0 0 12px" }}>
+            Set's possible myth units live in their own dashed section to the
+            right. Because hero always beats myth, the entire myth counter
+            zone collapses to one Greek Hero tile — less repetition, faster
+            read.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "120px 1fr", gap: "6px 14px", marginTop: 12, fontSize: 12 }}>
+            <div style={noteKey}>Footprint</div>
+            <div>~830 × 96 px for core, scrolls horizontally for full pool.</div>
+            <div style={noteKey}>Type</div>
+            <div>Geist + Geist Mono. 10.5 px name, 9 px caps for kickers.</div>
+            <div style={noteKey}>Color cue</div>
+            <div>Row label color = semantic (red enemy / green counter). Per-unit category dot dropped at this scale; image edge stripe carries it.</div>
+            <div style={noteKey}>States</div>
+            <div>Pill collapsed → Strip (overlay) → Setup (modal pick).</div>
+          </div>
+
+          <div style={{ marginTop: 16, paddingTop: 12, borderTop: "1px dashed rgba(0,0,0,0.12)",
+                        fontFamily: "var(--font-mono)", fontSize: 10.5, color: "rgba(60,50,40,0.7)",
+                        letterSpacing: "0.04em", lineHeight: 1.6 }}>
+            <b style={{ color: "#3a322a" }}>Image slots, real art lands later.</b>
+            <span style={{ display: "block", marginTop: 4, fontFamily: "var(--font-ui)", fontSize: 12, color: "rgba(60,50,40,0.85)" }}>
+              Licensing is resolved — the final app uses Age of Mythology: Retold
+              screenshots under Microsoft's Game Content Usage Rules. Every tile
+              in this prototype is a <b>fixed-size image slot</b> with a neutral
+              silhouette standing in. At ship, files drop into:
+            </span>
+            <span style={{ display: "block", marginTop: 8, fontFamily: "var(--font-mono)", fontSize: 10.5,
+                           color: "rgba(60,50,40,0.85)", lineHeight: 1.7 }}>
+              images/units/&#123;id&#125;.png &nbsp;<span style={{ color: "rgba(60,50,40,0.5)" }}>// e.g. images/units/gr_hoplite.png</span><br/>
+              images/gods/&#123;id&#125;.png  &nbsp;<span style={{ color: "rgba(60,50,40,0.5)" }}>// e.g. images/gods/zeus.png</span>
+            </span>
+            <span style={{ display: "block", marginTop: 8, fontFamily: "var(--font-ui)", fontSize: 12, color: "rgba(60,50,40,0.85)" }}>
+              IDs already match the keys in counter-data.json. Slot dimensions
+              are the contract — they will not change when art arrives.
+            </span>
+          </div>
+        </div>
+      );
+    }
+    const noteKey = {
+      color: "rgba(60,50,40,0.6)", fontFamily: "var(--font-mono)",
+      fontSize: 10, textTransform: "uppercase", letterSpacing: "0.1em"
+    };
+
+    /* ------------ Canvas ------------------------------------------------ */
+
+    function App() {
+      return (
+        <DesignCanvas
+          title="AOM Counters · companion app"
+          subtitle="Tauri always-on-top horizontal overlay · v0.2"
+        >
+          <DCSection
+            id="strip"
+            title="Strip · always-on-top overlay"
+            subtitle="Two rows, paired columns. Each enemy unit sits directly above the counter you should be queueing.">
+            <DCArtboard id="strip-full" label="Full · enemy + myth pool" width={1090} height={240}>
+              <StripFullArtboard />
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection
+            id="setup"
+            title="Setup · first launch"
+            subtitle="Empty state shown the first time the app opens. Welcome banner + numbered steps make the first move obvious.">
+            <DCArtboard id="setup-empty" label="Setup · no gods picked" width={420} height={680}>
+              <SetupFirstLaunchArtboard />
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection
+            id="notes"
+            title="Notes"
+            subtitle="Direction · system · open questions.">
+            <DCArtboard id="dirnote" label="Direction & system" width={528} height={500}>
+              <DesignNote />
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

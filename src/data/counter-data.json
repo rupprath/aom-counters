@@ -1,0 +1,2693 @@
+{
+  "schemaVersion": 3,
+  "gamePatch": "19.10195 Obsidian Mirror",
+  "lastUpdated": "2026-05-20",
+  "_about": "Counter dataset for the AoM Retold Counter Companion. All 23 major gods, 7 pantheon rosters, 72 minor gods, and the myth unit catalog are populated. Verified against multiple sources; low-confidence minor-god myth attributions carry confidence:'low'. See README.md.",
+  "categories": {
+    "infantry": {
+      "label": "Infantry",
+      "description": "Melee foot soldiers."
+    },
+    "ranged": {
+      "label": "Ranged soldier",
+      "description": "Archers and other ranged human soldiers."
+    },
+    "cavalry": {
+      "label": "Cavalry",
+      "description": "Mounted or fast shock soldiers."
+    },
+    "siege": {
+      "label": "Siege weapon",
+      "description": "Anti-building artillery, slow and fragile in melee."
+    },
+    "myth": {
+      "label": "Myth unit",
+      "description": "Mythological creatures granted by minor gods."
+    },
+    "hero": {
+      "label": "Hero",
+      "description": "Champion units, strong against myth units."
+    },
+    "building": {
+      "label": "Building",
+      "description": "Structures."
+    }
+  },
+  "counterRoles": {
+    "general": "Well-rounded unit with no single hard target.",
+    "counterInfantry": "Hard counter to infantry.",
+    "counterRanged": "Hard counter to ranged soldiers.",
+    "counterCavalry": "Hard counter to cavalry.",
+    "antiBuilding": "Specialized against buildings.",
+    "antiMyth": "Specialized against myth units (heroes)."
+  },
+  "categoryCounters": {
+    "_comment": "The reliable rock-paper-scissors core of AoM Retold. Each category lists the categories that beat it.",
+    "infantry": [
+      "ranged",
+      "myth"
+    ],
+    "ranged": [
+      "cavalry",
+      "myth"
+    ],
+    "cavalry": [
+      "infantry",
+      "myth"
+    ],
+    "siege": [
+      "cavalry",
+      "infantry"
+    ],
+    "myth": [
+      "hero"
+    ],
+    "hero": [
+      "infantry",
+      "ranged",
+      "cavalry"
+    ],
+    "building": [
+      "siege"
+    ]
+  },
+  "counterPlan": {
+    "_comment": "Recommendation engine. For an enemy unit of category KEY, recommend units filling the listed roster roles from the PLAYER god's pantheon, in order. note is the plain-language tip shown in the app.",
+    "infantry": {
+      "roles": [
+        "counterInfantry",
+        "ranged"
+      ],
+      "note": "Hit enemy infantry with your counter-infantry unit, backed by ranged soldiers."
+    },
+    "ranged": {
+      "roles": [
+        "counterRanged",
+        "cavalry"
+      ],
+      "note": "Close the gap on enemy ranged units with cavalry or your counter-archer unit."
+    },
+    "cavalry": {
+      "roles": [
+        "counterCavalry",
+        "infantry"
+      ],
+      "note": "Block enemy cavalry with your dedicated anti-cavalry unit."
+    },
+    "siege": {
+      "roles": [
+        "cavalry",
+        "counterInfantry"
+      ],
+      "note": "Siege is slow and fragile. Rush it with fast cavalry or infantry."
+    },
+    "myth": {
+      "roles": [
+        "hero"
+      ],
+      "note": "Myth units are beaten by heroes. Always keep heroes in your army."
+    },
+    "hero": {
+      "roles": [
+        "infantry",
+        "ranged",
+        "cavalry"
+      ],
+      "note": "Heroes fall to massed human soldiers. Focus them down together."
+    },
+    "building": {
+      "roles": [
+        "siege"
+      ],
+      "note": "Use siege weapons to bring down buildings."
+    }
+  },
+  "_rosterNotes": {
+    "norse": "No dedicated foot-archer role. The Throwing Axeman (counterInfantry) is a ranged infantry unit and is the closest Norse equivalent. This reflects the Norse lacking true archers.",
+    "chinese": "No dedicated counterInfantry role. Anti-infantry duty falls to the ranged Fire Archer and Chu Ko Nu. This reflects a known Chinese roster weakness.",
+    "aztec": "The siege role is filled by Otontin Smasher, an anti-building infantry unit, because the Aztecs field no siege engines.",
+    "_appNote": "When counterPlan lists a role a pantheon lacks, the app falls back to the next role in the list."
+  },
+  "pantheons": {
+    "greek": {
+      "label": "Greek",
+      "roster": {
+        "infantry": "gr_hoplite",
+        "counterInfantry": "gr_hypaspist",
+        "counterCavalry": "gr_prodromos",
+        "ranged": "gr_toxotes",
+        "counterRanged": "gr_peltast",
+        "cavalry": "gr_hippeus",
+        "siege": "gr_petrobolos",
+        "hero": "gr_hero"
+      }
+    },
+    "egyptian": {
+      "label": "Egyptian",
+      "roster": {
+        "counterInfantry": "eg_axeman",
+        "counterCavalry": "eg_spearman",
+        "ranged": "eg_chariot_archer",
+        "counterRanged": "eg_slinger",
+        "cavalry": "eg_camel_rider",
+        "siege": "eg_catapult",
+        "hero": "eg_pharaoh"
+      }
+    },
+    "norse": {
+      "label": "Norse",
+      "roster": {
+        "infantry": "no_ulfsark",
+        "counterInfantry": "no_throwing_axeman",
+        "counterCavalry": "no_hirdman",
+        "counterRanged": "no_huskarl",
+        "cavalry": "no_raiding_cavalry",
+        "siege": "no_portable_ram",
+        "hero": "no_hersir"
+      }
+    },
+    "atlantean": {
+      "label": "Atlantean",
+      "roster": {
+        "infantry": "at_murmillo",
+        "counterInfantry": "at_destroyer",
+        "counterCavalry": "at_katapeltes",
+        "ranged": "at_arcus",
+        "counterRanged": "at_turma",
+        "cavalry": "at_contarius",
+        "siege": "at_cheiroballista",
+        "hero": "at_hero"
+      }
+    },
+    "chinese": {
+      "label": "Chinese",
+      "roster": {
+        "infantry": "ch_dao_swordsman",
+        "counterCavalry": "ch_ge_halberdier",
+        "ranged": "ch_fire_archer",
+        "counterRanged": "ch_wuzu_javelineer",
+        "cavalry": "ch_white_horse_cavalry",
+        "siege": "ch_siege_crossbow",
+        "hero": "ch_sage"
+      }
+    },
+    "japanese": {
+      "label": "Japanese",
+      "roster": {
+        "counterInfantry": "jp_samurai",
+        "counterCavalry": "jp_yari_spearman",
+        "ranged": "jp_yumi_archer",
+        "counterRanged": "jp_shinobi",
+        "cavalry": "jp_naginata_rider",
+        "siege": "jp_oyumi",
+        "hero": "jp_onna_musha"
+      }
+    },
+    "aztec": {
+      "label": "Aztec",
+      "roster": {
+        "infantry": "az_ocelotl_warrior",
+        "counterInfantry": "az_shorn_one",
+        "counterCavalry": "az_tlamanih_spearman",
+        "counterRanged": "az_coyote_warrior",
+        "ranged": "az_tequihua_archer",
+        "cavalry": "az_jaguar_rider",
+        "siege": "az_otontin_smasher",
+        "hero": "az_warrior_priest"
+      }
+    }
+  },
+  "gods": {
+    "zeus": {
+      "name": "Zeus",
+      "pantheon": "greek",
+      "portrait": "images/gods/zeus.png"
+    },
+    "poseidon": {
+      "name": "Poseidon",
+      "pantheon": "greek",
+      "portrait": "images/gods/poseidon.png"
+    },
+    "hades": {
+      "name": "Hades",
+      "pantheon": "greek",
+      "portrait": "images/gods/hades.png"
+    },
+    "demeter": {
+      "name": "Demeter",
+      "pantheon": "greek",
+      "portrait": "images/gods/demeter.png"
+    },
+    "ra": {
+      "name": "Ra",
+      "pantheon": "egyptian",
+      "portrait": "images/gods/ra.png"
+    },
+    "isis": {
+      "name": "Isis",
+      "pantheon": "egyptian",
+      "portrait": "images/gods/isis.png"
+    },
+    "set": {
+      "name": "Set",
+      "pantheon": "egyptian",
+      "portrait": "images/gods/set.png"
+    },
+    "odin": {
+      "name": "Odin",
+      "pantheon": "norse",
+      "portrait": "images/gods/odin.png"
+    },
+    "thor": {
+      "name": "Thor",
+      "pantheon": "norse",
+      "portrait": "images/gods/thor.png"
+    },
+    "loki": {
+      "name": "Loki",
+      "pantheon": "norse",
+      "portrait": "images/gods/loki.png"
+    },
+    "freyr": {
+      "name": "Freyr",
+      "pantheon": "norse",
+      "portrait": "images/gods/freyr.png"
+    },
+    "kronos": {
+      "name": "Kronos",
+      "pantheon": "atlantean",
+      "portrait": "images/gods/kronos.png"
+    },
+    "oranos": {
+      "name": "Oranos",
+      "pantheon": "atlantean",
+      "portrait": "images/gods/oranos.png"
+    },
+    "gaia": {
+      "name": "Gaia",
+      "pantheon": "atlantean",
+      "portrait": "images/gods/gaia.png"
+    },
+    "fuxi": {
+      "name": "Fuxi",
+      "pantheon": "chinese",
+      "portrait": "images/gods/fuxi.png"
+    },
+    "nuwa": {
+      "name": "Nüwa",
+      "pantheon": "chinese",
+      "portrait": "images/gods/nuwa.png"
+    },
+    "shennong": {
+      "name": "Shennong",
+      "pantheon": "chinese",
+      "portrait": "images/gods/shennong.png"
+    },
+    "amaterasu": {
+      "name": "Amaterasu",
+      "pantheon": "japanese",
+      "portrait": "images/gods/amaterasu.png"
+    },
+    "tsukuyomi": {
+      "name": "Tsukuyomi",
+      "pantheon": "japanese",
+      "portrait": "images/gods/tsukuyomi.png"
+    },
+    "susanoo": {
+      "name": "Susanoo",
+      "pantheon": "japanese",
+      "portrait": "images/gods/susanoo.png"
+    },
+    "huitzilopochtli": {
+      "name": "Huitzilopochtli",
+      "pantheon": "aztec",
+      "portrait": "images/gods/huitzilopochtli.png"
+    },
+    "tezcatlipoca": {
+      "name": "Tezcatlipoca",
+      "pantheon": "aztec",
+      "portrait": "images/gods/tezcatlipoca.png"
+    },
+    "quetzalcoatl": {
+      "name": "Quetzalcoatl",
+      "pantheon": "aztec",
+      "portrait": "images/gods/quetzalcoatl.png"
+    }
+  },
+  "units": {
+    "gr_hoplite": {
+      "name": "Hoplite",
+      "category": "infantry",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_hoplite.png",
+      "isMyth": false
+    },
+    "gr_hypaspist": {
+      "name": "Hypaspist",
+      "category": "infantry",
+      "counterRole": "counterInfantry",
+      "pantheon": "greek",
+      "image": "images/units/gr_hypaspist.png",
+      "isMyth": false
+    },
+    "gr_prodromos": {
+      "name": "Prodromos",
+      "category": "cavalry",
+      "counterRole": "counterCavalry",
+      "pantheon": "greek",
+      "image": "images/units/gr_prodromos.png",
+      "isMyth": false
+    },
+    "gr_toxotes": {
+      "name": "Toxotes",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_toxotes.png",
+      "isMyth": false
+    },
+    "gr_peltast": {
+      "name": "Peltast",
+      "category": "ranged",
+      "counterRole": "counterRanged",
+      "pantheon": "greek",
+      "image": "images/units/gr_peltast.png",
+      "isMyth": false
+    },
+    "gr_hippeus": {
+      "name": "Hippeus",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_hippeus.png",
+      "isMyth": false
+    },
+    "gr_petrobolos": {
+      "name": "Petrobolos",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "greek",
+      "image": "images/units/gr_petrobolos.png",
+      "isMyth": false
+    },
+    "gr_helepolis": {
+      "name": "Helepolis",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "greek",
+      "image": "images/units/gr_helepolis.png",
+      "isMyth": false
+    },
+    "gr_hero": {
+      "name": "Greek Hero",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "greek",
+      "image": "images/units/gr_hero.png",
+      "isMyth": false
+    },
+    "gr_myrmidon": {
+      "name": "Myrmidon",
+      "category": "infantry",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_myrmidon.png",
+      "isMyth": false,
+      "uniqueTo": "zeus",
+      "_note": "Fortress unit. Bonus damage vs non-Greek human soldiers."
+    },
+    "gr_hetairos": {
+      "name": "Hetairos",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_hetairos.png",
+      "isMyth": false,
+      "uniqueTo": "poseidon",
+      "_note": "Fortress unit. Cavalry also effective against buildings."
+    },
+    "eg_spearman": {
+      "name": "Spearman",
+      "category": "infantry",
+      "counterRole": "counterCavalry",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_spearman.png",
+      "isMyth": false
+    },
+    "eg_axeman": {
+      "name": "Axeman",
+      "category": "infantry",
+      "counterRole": "counterInfantry",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_axeman.png",
+      "isMyth": false
+    },
+    "eg_slinger": {
+      "name": "Slinger",
+      "category": "ranged",
+      "counterRole": "counterRanged",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_slinger.png",
+      "isMyth": false
+    },
+    "eg_chariot_archer": {
+      "name": "Chariot Archer",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_chariot_archer.png",
+      "isMyth": false
+    },
+    "eg_camel_rider": {
+      "name": "Camel Rider",
+      "category": "cavalry",
+      "counterRole": "counterCavalry",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_camel_rider.png",
+      "isMyth": false
+    },
+    "eg_war_elephant": {
+      "name": "War Elephant",
+      "category": "cavalry",
+      "counterRole": "antiBuilding",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_war_elephant.png",
+      "isMyth": false
+    },
+    "eg_catapult": {
+      "name": "Catapult",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_catapult.png",
+      "isMyth": false
+    },
+    "eg_siege_tower": {
+      "name": "Siege Tower",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_siege_tower.png",
+      "isMyth": false
+    },
+    "eg_pharaoh": {
+      "name": "Pharaoh",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_pharaoh.png",
+      "isMyth": false
+    },
+    "no_ulfsark": {
+      "name": "Ulfsark",
+      "category": "infantry",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_ulfsark.png",
+      "isMyth": false
+    },
+    "no_throwing_axeman": {
+      "name": "Throwing Axeman",
+      "category": "infantry",
+      "counterRole": "counterInfantry",
+      "pantheon": "norse",
+      "image": "images/units/no_throwing_axeman.png",
+      "isMyth": false
+    },
+    "no_hirdman": {
+      "name": "Hirdman",
+      "category": "infantry",
+      "counterRole": "counterCavalry",
+      "pantheon": "norse",
+      "image": "images/units/no_hirdman.png",
+      "isMyth": false
+    },
+    "no_huskarl": {
+      "name": "Huskarl",
+      "category": "infantry",
+      "counterRole": "counterRanged",
+      "pantheon": "norse",
+      "image": "images/units/no_huskarl.png",
+      "isMyth": false
+    },
+    "no_raiding_cavalry": {
+      "name": "Raiding Cavalry",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_raiding_cavalry.png",
+      "isMyth": false
+    },
+    "no_jarl": {
+      "name": "Jarl",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_jarl.png",
+      "isMyth": false
+    },
+    "no_portable_ram": {
+      "name": "Portable Ram",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "norse",
+      "image": "images/units/no_portable_ram.png",
+      "isMyth": false
+    },
+    "no_ballista": {
+      "name": "Ballista",
+      "category": "siege",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_ballista.png",
+      "isMyth": false
+    },
+    "no_hersir": {
+      "name": "Hersir",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "norse",
+      "image": "images/units/no_hersir.png",
+      "isMyth": false
+    },
+    "at_murmillo": {
+      "name": "Murmillo",
+      "category": "infantry",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_murmillo.png",
+      "isMyth": false
+    },
+    "at_destroyer": {
+      "name": "Destroyer",
+      "category": "infantry",
+      "counterRole": "counterInfantry",
+      "pantheon": "atlantean",
+      "image": "images/units/at_destroyer.png",
+      "isMyth": false
+    },
+    "at_katapeltes": {
+      "name": "Katapeltes",
+      "category": "infantry",
+      "counterRole": "counterCavalry",
+      "pantheon": "atlantean",
+      "image": "images/units/at_katapeltes.png",
+      "isMyth": false
+    },
+    "at_fanatic": {
+      "name": "Fanatic",
+      "category": "infantry",
+      "counterRole": "counterInfantry",
+      "pantheon": "atlantean",
+      "image": "images/units/at_fanatic.png",
+      "isMyth": false
+    },
+    "at_arcus": {
+      "name": "Arcus",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_arcus.png",
+      "isMyth": false
+    },
+    "at_turma": {
+      "name": "Turma",
+      "category": "cavalry",
+      "counterRole": "counterRanged",
+      "pantheon": "atlantean",
+      "image": "images/units/at_turma.png",
+      "isMyth": false
+    },
+    "at_contarius": {
+      "name": "Contarius",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_contarius.png",
+      "isMyth": false
+    },
+    "at_cheiroballista": {
+      "name": "Cheiroballista",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "atlantean",
+      "image": "images/units/at_cheiroballista.png",
+      "isMyth": false
+    },
+    "at_hero": {
+      "name": "Atlantean Hero",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "atlantean",
+      "image": "images/units/at_hero.png",
+      "isMyth": false
+    },
+    "ch_dao_swordsman": {
+      "name": "Dao Swordsman",
+      "category": "infantry",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_dao_swordsman.png",
+      "isMyth": false
+    },
+    "ch_ge_halberdier": {
+      "name": "Ge Halberdier",
+      "category": "infantry",
+      "counterRole": "counterCavalry",
+      "pantheon": "chinese",
+      "image": "images/units/ch_ge_halberdier.png",
+      "isMyth": false
+    },
+    "ch_wuzu_javelineer": {
+      "name": "Wuzu Javelineer",
+      "category": "ranged",
+      "counterRole": "counterRanged",
+      "pantheon": "chinese",
+      "image": "images/units/ch_wuzu_javelineer.png",
+      "isMyth": false
+    },
+    "ch_fire_archer": {
+      "name": "Fire Archer",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_fire_archer.png",
+      "isMyth": false
+    },
+    "ch_chu_ko_nu": {
+      "name": "Chu Ko Nu",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_chu_ko_nu.png",
+      "isMyth": false
+    },
+    "ch_white_horse_cavalry": {
+      "name": "White Horse Cavalry",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_white_horse_cavalry.png",
+      "isMyth": false
+    },
+    "ch_tiger_cavalry": {
+      "name": "Tiger Cavalry",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_tiger_cavalry.png",
+      "isMyth": false
+    },
+    "ch_siege_crossbow": {
+      "name": "Siege Crossbow",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "chinese",
+      "image": "images/units/ch_siege_crossbow.png",
+      "isMyth": false
+    },
+    "ch_axe_cart": {
+      "name": "Axe Cart",
+      "category": "siege",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_axe_cart.png",
+      "isMyth": false
+    },
+    "ch_sage": {
+      "name": "Sage",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "chinese",
+      "image": "images/units/ch_sage.png",
+      "isMyth": false
+    },
+    "jp_yari_spearman": {
+      "name": "Yari Spearman",
+      "category": "infantry",
+      "counterRole": "counterCavalry",
+      "pantheon": "japanese",
+      "image": "images/units/jp_yari_spearman.png",
+      "isMyth": false
+    },
+    "jp_samurai": {
+      "name": "Samurai",
+      "category": "infantry",
+      "counterRole": "counterInfantry",
+      "pantheon": "japanese",
+      "image": "images/units/jp_samurai.png",
+      "isMyth": false
+    },
+    "jp_shinobi": {
+      "name": "Shinobi",
+      "category": "infantry",
+      "counterRole": "counterRanged",
+      "pantheon": "japanese",
+      "image": "images/units/jp_shinobi.png",
+      "isMyth": false
+    },
+    "jp_yumi_archer": {
+      "name": "Yumi Archer",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_yumi_archer.png",
+      "isMyth": false
+    },
+    "jp_naginata_rider": {
+      "name": "Naginata Rider",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_naginata_rider.png",
+      "isMyth": false
+    },
+    "jp_yumi_horse_archer": {
+      "name": "Yumi Horse Archer",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_yumi_horse_archer.png",
+      "isMyth": false
+    },
+    "jp_oyumi": {
+      "name": "Oyumi",
+      "category": "siege",
+      "counterRole": "antiBuilding",
+      "pantheon": "japanese",
+      "image": "images/units/jp_oyumi.png",
+      "isMyth": false
+    },
+    "jp_onna_musha": {
+      "name": "Onna-musha",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "japanese",
+      "image": "images/units/jp_onna_musha.png",
+      "isMyth": false
+    },
+    "jp_daimyo": {
+      "name": "Daimyo",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "japanese",
+      "image": "images/units/jp_daimyo.png",
+      "isMyth": false
+    },
+    "jp_bushi": {
+      "name": "Bushi",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "japanese",
+      "image": "images/units/jp_bushi.png",
+      "isMyth": false
+    },
+    "az_tlamanih_spearman": {
+      "name": "Tlamanih Spearman",
+      "category": "infantry",
+      "counterRole": "counterCavalry",
+      "pantheon": "aztec",
+      "image": "images/units/az_tlamanih_spearman.png",
+      "isMyth": false
+    },
+    "az_shorn_one": {
+      "name": "Shorn One",
+      "category": "infantry",
+      "counterRole": "counterInfantry",
+      "pantheon": "aztec",
+      "image": "images/units/az_shorn_one.png",
+      "isMyth": false
+    },
+    "az_coyote_warrior": {
+      "name": "Coyote Warrior",
+      "category": "infantry",
+      "counterRole": "counterRanged",
+      "pantheon": "aztec",
+      "image": "images/units/az_coyote_warrior.png",
+      "isMyth": false
+    },
+    "az_tequihua_archer": {
+      "name": "Tequihua Archer",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_tequihua_archer.png",
+      "isMyth": false
+    },
+    "az_jaguar_rider": {
+      "name": "Jaguar Rider",
+      "category": "cavalry",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_jaguar_rider.png",
+      "isMyth": false
+    },
+    "az_ocelotl_warrior": {
+      "name": "Ocelotl Warrior",
+      "category": "infantry",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_ocelotl_warrior.png",
+      "isMyth": false
+    },
+    "az_eagle_warrior": {
+      "name": "Eagle Warrior",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_eagle_warrior.png",
+      "isMyth": false
+    },
+    "az_otontin_smasher": {
+      "name": "Otontin Smasher",
+      "category": "infantry",
+      "counterRole": "antiBuilding",
+      "pantheon": "aztec",
+      "image": "images/units/az_otontin_smasher.png",
+      "isMyth": false
+    },
+    "az_warrior_priest": {
+      "name": "Warrior Priest",
+      "category": "hero",
+      "counterRole": "antiMyth",
+      "pantheon": "aztec",
+      "image": "images/units/az_warrior_priest.png",
+      "isMyth": false
+    },
+    "gr_minotaur": {
+      "name": "Minotaur",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_minotaur.png",
+      "isMyth": true
+    },
+    "gr_centaur": {
+      "name": "Centaur",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_centaur.png",
+      "isMyth": true
+    },
+    "gr_cyclops": {
+      "name": "Cyclops",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_cyclops.png",
+      "isMyth": true
+    },
+    "gr_lykaon": {
+      "name": "Lykaon",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_lykaon.png",
+      "isMyth": true
+    },
+    "gr_manticore": {
+      "name": "Manticore",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_manticore.png",
+      "isMyth": true
+    },
+    "gr_hydra": {
+      "name": "Hydra",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_hydra.png",
+      "isMyth": true
+    },
+    "gr_scylla": {
+      "name": "Scylla",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_scylla.png",
+      "isMyth": true
+    },
+    "gr_nemean_lion": {
+      "name": "Nemean Lion",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_nemean_lion.png",
+      "isMyth": true
+    },
+    "gr_hamadryad": {
+      "name": "Hamadryad",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_hamadryad.png",
+      "isMyth": true
+    },
+    "gr_chimera": {
+      "name": "Chimera",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_chimera.png",
+      "isMyth": true
+    },
+    "gr_colossus": {
+      "name": "Colossus",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_colossus.png",
+      "isMyth": true
+    },
+    "gr_carcinos": {
+      "name": "Carcinos",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_carcinos.png",
+      "isMyth": true
+    },
+    "gr_medusa": {
+      "name": "Medusa",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_medusa.png",
+      "isMyth": true
+    },
+    "gr_siren": {
+      "name": "Siren",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_siren.png",
+      "isMyth": true
+    },
+    "eg_sphinx": {
+      "name": "Sphinx",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_sphinx.png",
+      "isMyth": true
+    },
+    "eg_wadjet": {
+      "name": "Wadjet",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_wadjet.png",
+      "isMyth": true
+    },
+    "eg_anubite": {
+      "name": "Anubite",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_anubite.png",
+      "isMyth": true
+    },
+    "eg_petsuchos": {
+      "name": "Petsuchos",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_petsuchos.png",
+      "isMyth": true
+    },
+    "eg_roc": {
+      "name": "Roc",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_roc.png",
+      "isMyth": true
+    },
+    "eg_scarab": {
+      "name": "Scarab",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_scarab.png",
+      "isMyth": true
+    },
+    "eg_scorpion_man": {
+      "name": "Scorpion Man",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_scorpion_man.png",
+      "isMyth": true
+    },
+    "eg_leviathan": {
+      "name": "Leviathan",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_leviathan.png",
+      "isMyth": true
+    },
+    "eg_mummy": {
+      "name": "Mummy",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_mummy.png",
+      "isMyth": true
+    },
+    "eg_avenger": {
+      "name": "Avenger",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_avenger.png",
+      "isMyth": true
+    },
+    "eg_phoenix": {
+      "name": "Phoenix",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "egyptian",
+      "image": "images/units/eg_phoenix.png",
+      "isMyth": true
+    },
+    "no_valkyrie": {
+      "name": "Valkyrie",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_valkyrie.png",
+      "isMyth": true
+    },
+    "no_einheri": {
+      "name": "Einheri",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_einheri.png",
+      "isMyth": true
+    },
+    "no_draugr": {
+      "name": "Draugr",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_draugr.png",
+      "isMyth": true
+    },
+    "no_frost_giant": {
+      "name": "Frost Giant",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_frost_giant.png",
+      "isMyth": true
+    },
+    "no_battle_boar": {
+      "name": "Battle Boar",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_battle_boar.png",
+      "isMyth": true
+    },
+    "no_kraken": {
+      "name": "Kraken",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_kraken.png",
+      "isMyth": true
+    },
+    "no_mountain_giant": {
+      "name": "Mountain Giant",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_mountain_giant.png",
+      "isMyth": true
+    },
+    "no_rock_giant": {
+      "name": "Rock Giant",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_rock_giant.png",
+      "isMyth": true
+    },
+    "no_fire_giant": {
+      "name": "Fire Giant",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_fire_giant.png",
+      "isMyth": true
+    },
+    "no_jormun_elver": {
+      "name": "Jormun Elver",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_jormun_elver.png",
+      "isMyth": true
+    },
+    "no_fafnir": {
+      "name": "Fafnir",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "norse",
+      "image": "images/units/no_fafnir.png",
+      "isMyth": true
+    },
+    "at_promethean": {
+      "name": "Promethean",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_promethean.png",
+      "isMyth": true
+    },
+    "at_automaton": {
+      "name": "Automaton",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_automaton.png",
+      "isMyth": true
+    },
+    "at_caladria": {
+      "name": "Caladria",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_caladria.png",
+      "isMyth": true
+    },
+    "at_servant": {
+      "name": "Servant",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_servant.png",
+      "isMyth": true
+    },
+    "at_nereid": {
+      "name": "Nereid",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_nereid.png",
+      "isMyth": true
+    },
+    "at_satyr": {
+      "name": "Satyr",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_satyr.png",
+      "isMyth": true
+    },
+    "at_behemoth": {
+      "name": "Behemoth",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_behemoth.png",
+      "isMyth": true
+    },
+    "at_stymphalian_bird": {
+      "name": "Stymphalian Bird",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_stymphalian_bird.png",
+      "isMyth": true
+    },
+    "at_dryad": {
+      "name": "Dryad",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_dryad.png",
+      "isMyth": true
+    },
+    "at_argus": {
+      "name": "Argus",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_argus.png",
+      "isMyth": true
+    },
+    "at_lampades": {
+      "name": "Lampades",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_lampades.png",
+      "isMyth": true
+    },
+    "at_man_o_war": {
+      "name": "Man o' War",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "atlantean",
+      "image": "images/units/at_man_o_war.png",
+      "isMyth": true
+    },
+    "ch_qilin": {
+      "name": "Qilin",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_qilin.png",
+      "isMyth": true
+    },
+    "ch_yazi": {
+      "name": "Yazi",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_yazi.png",
+      "isMyth": true
+    },
+    "ch_baihu": {
+      "name": "Baihu",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_baihu.png",
+      "isMyth": true
+    },
+    "ch_taowu": {
+      "name": "Taowu",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_taowu.png",
+      "isMyth": true
+    },
+    "ch_taotie": {
+      "name": "Taotie",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_taotie.png",
+      "isMyth": true
+    },
+    "ch_qiongqi": {
+      "name": "Qiongqi",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_qiongqi.png",
+      "isMyth": true
+    },
+    "ch_qinglong": {
+      "name": "Qinglong",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_qinglong.png",
+      "isMyth": true
+    },
+    "ch_hundun": {
+      "name": "Hundun",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_hundun.png",
+      "isMyth": true
+    },
+    "ch_zhuque": {
+      "name": "Zhuque",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "chinese",
+      "image": "images/units/ch_zhuque.png",
+      "isMyth": true
+    },
+    "jp_yamabushi": {
+      "name": "Yamabushi",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_yamabushi.png",
+      "isMyth": true
+    },
+    "jp_wanyudo": {
+      "name": "Wanyūdō",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_wanyudo.png",
+      "isMyth": true
+    },
+    "jp_tengu": {
+      "name": "Tengu",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_tengu.png",
+      "isMyth": true
+    },
+    "jp_oni": {
+      "name": "Oni",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_oni.png",
+      "isMyth": true
+    },
+    "jp_kamaitachi": {
+      "name": "Kamaitachi",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_kamaitachi.png",
+      "isMyth": true
+    },
+    "jp_umibozu": {
+      "name": "Umibōzu",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_umibozu.png",
+      "isMyth": true
+    },
+    "jp_shinigami": {
+      "name": "Shinigami",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "japanese",
+      "image": "images/units/jp_shinigami.png",
+      "isMyth": true
+    },
+    "az_axolotl": {
+      "name": "Axolotl",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_axolotl.png",
+      "isMyth": true
+    },
+    "az_ahuizotl": {
+      "name": "Ahuizotl",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_ahuizotl.png",
+      "isMyth": true
+    },
+    "az_quinametzin": {
+      "name": "Quinametzin",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_quinametzin.png",
+      "isMyth": true
+    },
+    "az_obsidian_butterfly": {
+      "name": "Obsidian Butterfly",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_obsidian_butterfly.png",
+      "isMyth": true
+    },
+    "az_centzon_totochtin": {
+      "name": "Centzon Totochtin",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_centzon_totochtin.png",
+      "isMyth": true
+    },
+    "az_tzitzimitl": {
+      "name": "Tzitzimitl",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_tzitzimitl.png",
+      "isMyth": true
+    },
+    "az_soul_guide": {
+      "name": "Soul Guide",
+      "category": "myth",
+      "counterRole": "general",
+      "pantheon": "aztec",
+      "image": "images/units/az_soul_guide.png",
+      "isMyth": true
+    },
+    "gr_amazon_archer": {
+      "name": "Amazon Archer",
+      "category": "ranged",
+      "counterRole": "general",
+      "pantheon": "greek",
+      "image": "images/units/gr_amazon_archer.png",
+      "isMyth": false,
+      "uniqueTo": "demeter",
+      "_note": "Fortress unit, added in update 19.5934. Replaced the Harpy, which moved to the Temple."
+    },
+    "gr_gastraphetoros": {
+      "name": "Gastraphetoros",
+      "category": "ranged",
+      "counterRole": "antiBuilding",
+      "pantheon": "greek",
+      "image": "images/units/gr_gastraphetes.png",
+      "isMyth": false,
+      "uniqueTo": "hades",
+      "_note": "Fortress unit. Long-range ranged soldier also effective against buildings."
+    }
+  },
+  "pantheonThreats": {
+    "_comment": "The threats a player faces from ANY major god of the opponent's pantheon, since base military units are shared within a pantheon. Ordered by default priority (1 = highest). The app shows threats[opponentGod.pantheon] plus any godSpecificThreats[opponentGod].",
+    "greek": [
+      {
+        "unit": "gr_hoplite",
+        "priority": 1
+      },
+      {
+        "unit": "gr_toxotes",
+        "priority": 2
+      },
+      {
+        "unit": "gr_hippeus",
+        "priority": 3
+      },
+      {
+        "unit": "gr_hypaspist",
+        "priority": 4
+      },
+      {
+        "unit": "gr_prodromos",
+        "priority": 5
+      },
+      {
+        "unit": "gr_peltast",
+        "priority": 6
+      },
+      {
+        "unit": "gr_petrobolos",
+        "priority": 7
+      },
+      {
+        "unit": "gr_helepolis",
+        "priority": 8
+      }
+    ],
+    "egyptian": [
+      {
+        "unit": "eg_spearman",
+        "priority": 1
+      },
+      {
+        "unit": "eg_chariot_archer",
+        "priority": 2
+      },
+      {
+        "unit": "eg_camel_rider",
+        "priority": 3
+      },
+      {
+        "unit": "eg_axeman",
+        "priority": 4
+      },
+      {
+        "unit": "eg_slinger",
+        "priority": 5
+      },
+      {
+        "unit": "eg_war_elephant",
+        "priority": 6
+      },
+      {
+        "unit": "eg_catapult",
+        "priority": 7
+      },
+      {
+        "unit": "eg_siege_tower",
+        "priority": 8
+      }
+    ],
+    "norse": [
+      {
+        "unit": "no_ulfsark",
+        "priority": 1
+      },
+      {
+        "unit": "no_throwing_axeman",
+        "priority": 2
+      },
+      {
+        "unit": "no_raiding_cavalry",
+        "priority": 3
+      },
+      {
+        "unit": "no_hirdman",
+        "priority": 4
+      },
+      {
+        "unit": "no_huskarl",
+        "priority": 5
+      },
+      {
+        "unit": "no_jarl",
+        "priority": 6
+      },
+      {
+        "unit": "no_portable_ram",
+        "priority": 7
+      },
+      {
+        "unit": "no_ballista",
+        "priority": 8
+      }
+    ],
+    "atlantean": [
+      {
+        "unit": "at_murmillo",
+        "priority": 1
+      },
+      {
+        "unit": "at_arcus",
+        "priority": 2
+      },
+      {
+        "unit": "at_contarius",
+        "priority": 3
+      },
+      {
+        "unit": "at_katapeltes",
+        "priority": 4
+      },
+      {
+        "unit": "at_destroyer",
+        "priority": 5
+      },
+      {
+        "unit": "at_turma",
+        "priority": 6
+      },
+      {
+        "unit": "at_fanatic",
+        "priority": 7
+      },
+      {
+        "unit": "at_cheiroballista",
+        "priority": 8
+      }
+    ],
+    "chinese": [
+      {
+        "unit": "ch_dao_swordsman",
+        "priority": 1
+      },
+      {
+        "unit": "ch_fire_archer",
+        "priority": 2
+      },
+      {
+        "unit": "ch_white_horse_cavalry",
+        "priority": 3
+      },
+      {
+        "unit": "ch_ge_halberdier",
+        "priority": 4
+      },
+      {
+        "unit": "ch_chu_ko_nu",
+        "priority": 5
+      },
+      {
+        "unit": "ch_wuzu_javelineer",
+        "priority": 6
+      },
+      {
+        "unit": "ch_tiger_cavalry",
+        "priority": 7
+      },
+      {
+        "unit": "ch_siege_crossbow",
+        "priority": 8
+      },
+      {
+        "unit": "ch_axe_cart",
+        "priority": 9
+      }
+    ],
+    "japanese": [
+      {
+        "unit": "jp_samurai",
+        "priority": 1
+      },
+      {
+        "unit": "jp_yumi_archer",
+        "priority": 2
+      },
+      {
+        "unit": "jp_naginata_rider",
+        "priority": 3
+      },
+      {
+        "unit": "jp_yari_spearman",
+        "priority": 4
+      },
+      {
+        "unit": "jp_shinobi",
+        "priority": 5
+      },
+      {
+        "unit": "jp_yumi_horse_archer",
+        "priority": 6
+      },
+      {
+        "unit": "jp_oyumi",
+        "priority": 7
+      }
+    ],
+    "aztec": [
+      {
+        "unit": "az_jaguar_rider",
+        "priority": 1
+      },
+      {
+        "unit": "az_tequihua_archer",
+        "priority": 2
+      },
+      {
+        "unit": "az_shorn_one",
+        "priority": 3
+      },
+      {
+        "unit": "az_tlamanih_spearman",
+        "priority": 4
+      },
+      {
+        "unit": "az_coyote_warrior",
+        "priority": 5
+      },
+      {
+        "unit": "az_ocelotl_warrior",
+        "priority": 6
+      },
+      {
+        "unit": "az_eagle_warrior",
+        "priority": 7
+      },
+      {
+        "unit": "az_otontin_smasher",
+        "priority": 8
+      }
+    ]
+  },
+  "godSpecificThreats": {
+    "_comment": "God-specific extra threats: Fortress/unique units, appended to pantheonThreats for that god. Verified entries reference real unit ids. Myth-unit threats are NOT here; see mythLayerStatus.",
+    "zeus": [
+      {
+        "unit": "gr_myrmidon",
+        "priority": 5
+      }
+    ],
+    "poseidon": [
+      {
+        "unit": "gr_hetairos",
+        "priority": 5
+      }
+    ],
+    "hades": [
+      {
+        "unit": "gr_gastraphetoros",
+        "priority": 5
+      }
+    ],
+    "demeter": [
+      {
+        "unit": "gr_amazon_archer",
+        "priority": 5
+      }
+    ]
+  },
+  "mythLayerStatus": {
+    "status": "complete",
+    "_comment": "Enemy myth units are computed: for opponent god G, possible myth units = the union of minorGods[m].mythUnits for every m in godMinorChoices[G] across all three ages. Display each as 'possible'. All resolve to the player's hero via counterPlan.myth.",
+    "lowConfidenceNote": "Minor gods with confidence:'low' have myth-unit attributions resting on a single or circumstantial source (most Japanese and several Aztec minor gods, plus Greek Hephaestus/Hera, Norse Heimdall, Atlantean Helios/Hekate, Chinese Houtu/Rushou). Re-verify after future patches."
+  },
+  "counterOverrides": {
+    "_comment": "Player-god-specific exceptions to counterPlan, keyed by player god id then threat unit id. Empty for now; add only where a god's bonuses make the generic recommendation clearly wrong."
+  },
+  "minorGods": {
+    "athena": {
+      "name": "Athena",
+      "pantheon": "greek",
+      "age": "classical",
+      "mythUnits": [
+        "gr_minotaur"
+      ],
+      "confidence": "high"
+    },
+    "hermes": {
+      "name": "Hermes",
+      "pantheon": "greek",
+      "age": "classical",
+      "mythUnits": [
+        "gr_centaur"
+      ],
+      "confidence": "high"
+    },
+    "ares": {
+      "name": "Ares",
+      "pantheon": "greek",
+      "age": "classical",
+      "mythUnits": [
+        "gr_cyclops"
+      ],
+      "confidence": "high"
+    },
+    "pan": {
+      "name": "Pan",
+      "pantheon": "greek",
+      "age": "classical",
+      "mythUnits": [
+        "gr_lykaon"
+      ],
+      "confidence": "high"
+    },
+    "apollo": {
+      "name": "Apollo",
+      "pantheon": "greek",
+      "age": "heroic",
+      "mythUnits": [
+        "gr_manticore"
+      ],
+      "confidence": "high"
+    },
+    "dionysus": {
+      "name": "Dionysus",
+      "pantheon": "greek",
+      "age": "heroic",
+      "mythUnits": [
+        "gr_hydra",
+        "gr_scylla"
+      ],
+      "confidence": "high"
+    },
+    "aphrodite": {
+      "name": "Aphrodite",
+      "pantheon": "greek",
+      "age": "heroic",
+      "mythUnits": [
+        "gr_nemean_lion"
+      ],
+      "confidence": "high"
+    },
+    "hestia": {
+      "name": "Hestia",
+      "pantheon": "greek",
+      "age": "heroic",
+      "mythUnits": [
+        "gr_hamadryad"
+      ],
+      "confidence": "high"
+    },
+    "artemis": {
+      "name": "Artemis",
+      "pantheon": "greek",
+      "age": "mythic",
+      "mythUnits": [
+        "gr_chimera"
+      ],
+      "confidence": "high"
+    },
+    "hephaestus": {
+      "name": "Hephaestus",
+      "pantheon": "greek",
+      "age": "mythic",
+      "mythUnits": [
+        "gr_colossus",
+        "gr_carcinos"
+      ],
+      "confidence": "low"
+    },
+    "hera": {
+      "name": "Hera",
+      "pantheon": "greek",
+      "age": "mythic",
+      "mythUnits": [
+        "gr_medusa"
+      ],
+      "confidence": "low"
+    },
+    "persephone": {
+      "name": "Persephone",
+      "pantheon": "greek",
+      "age": "mythic",
+      "mythUnits": [
+        "gr_siren"
+      ],
+      "confidence": "high"
+    },
+    "bast": {
+      "name": "Bast",
+      "pantheon": "egyptian",
+      "age": "classical",
+      "mythUnits": [
+        "eg_sphinx"
+      ],
+      "confidence": "high"
+    },
+    "ptah": {
+      "name": "Ptah",
+      "pantheon": "egyptian",
+      "age": "classical",
+      "mythUnits": [
+        "eg_wadjet"
+      ],
+      "confidence": "high"
+    },
+    "anubis": {
+      "name": "Anubis",
+      "pantheon": "egyptian",
+      "age": "classical",
+      "mythUnits": [
+        "eg_anubite"
+      ],
+      "confidence": "high"
+    },
+    "sobek": {
+      "name": "Sobek",
+      "pantheon": "egyptian",
+      "age": "heroic",
+      "mythUnits": [
+        "eg_petsuchos",
+        "eg_roc"
+      ],
+      "confidence": "high"
+    },
+    "sekhmet": {
+      "name": "Sekhmet",
+      "pantheon": "egyptian",
+      "age": "heroic",
+      "mythUnits": [
+        "eg_scarab"
+      ],
+      "confidence": "high"
+    },
+    "nephthys": {
+      "name": "Nephthys",
+      "pantheon": "egyptian",
+      "age": "heroic",
+      "mythUnits": [
+        "eg_scorpion_man",
+        "eg_leviathan"
+      ],
+      "confidence": "high"
+    },
+    "osiris": {
+      "name": "Osiris",
+      "pantheon": "egyptian",
+      "age": "mythic",
+      "mythUnits": [
+        "eg_mummy"
+      ],
+      "confidence": "high"
+    },
+    "horus": {
+      "name": "Horus",
+      "pantheon": "egyptian",
+      "age": "mythic",
+      "mythUnits": [
+        "eg_avenger"
+      ],
+      "confidence": "high"
+    },
+    "thoth": {
+      "name": "Thoth",
+      "pantheon": "egyptian",
+      "age": "mythic",
+      "mythUnits": [
+        "eg_phoenix"
+      ],
+      "confidence": "high"
+    },
+    "freyja": {
+      "name": "Freyja",
+      "pantheon": "norse",
+      "age": "classical",
+      "mythUnits": [
+        "no_valkyrie"
+      ],
+      "confidence": "high"
+    },
+    "forseti": {
+      "name": "Forseti",
+      "pantheon": "norse",
+      "age": "classical",
+      "mythUnits": [
+        "no_einheri"
+      ],
+      "confidence": "high"
+    },
+    "heimdall": {
+      "name": "Heimdall",
+      "pantheon": "norse",
+      "age": "classical",
+      "mythUnits": [
+        "no_einheri"
+      ],
+      "confidence": "low"
+    },
+    "ullr": {
+      "name": "Ullr",
+      "pantheon": "norse",
+      "age": "classical",
+      "mythUnits": [
+        "no_draugr"
+      ],
+      "confidence": "high"
+    },
+    "skadi": {
+      "name": "Skadi",
+      "pantheon": "norse",
+      "age": "heroic",
+      "mythUnits": [
+        "no_frost_giant"
+      ],
+      "confidence": "high"
+    },
+    "bragi": {
+      "name": "Bragi",
+      "pantheon": "norse",
+      "age": "heroic",
+      "mythUnits": [
+        "no_battle_boar"
+      ],
+      "confidence": "high"
+    },
+    "njord": {
+      "name": "Njord",
+      "pantheon": "norse",
+      "age": "heroic",
+      "mythUnits": [
+        "no_kraken",
+        "no_mountain_giant"
+      ],
+      "confidence": "high"
+    },
+    "aegir": {
+      "name": "Aegir",
+      "pantheon": "norse",
+      "age": "heroic",
+      "mythUnits": [
+        "no_rock_giant"
+      ],
+      "confidence": "high"
+    },
+    "baldr": {
+      "name": "Baldr",
+      "pantheon": "norse",
+      "age": "mythic",
+      "mythUnits": [
+        "no_fire_giant"
+      ],
+      "confidence": "high"
+    },
+    "tyr": {
+      "name": "Tyr",
+      "pantheon": "norse",
+      "age": "mythic",
+      "mythUnits": [
+        "no_jormun_elver"
+      ],
+      "confidence": "high"
+    },
+    "hel": {
+      "name": "Hel",
+      "pantheon": "norse",
+      "age": "mythic",
+      "mythUnits": [
+        "no_mountain_giant",
+        "no_frost_giant",
+        "no_fire_giant"
+      ],
+      "confidence": "high"
+    },
+    "vidar": {
+      "name": "Vidar",
+      "pantheon": "norse",
+      "age": "mythic",
+      "mythUnits": [
+        "no_fafnir"
+      ],
+      "confidence": "high"
+    },
+    "prometheus": {
+      "name": "Prometheus",
+      "pantheon": "atlantean",
+      "age": "classical",
+      "mythUnits": [
+        "at_promethean"
+      ],
+      "confidence": "high"
+    },
+    "leto": {
+      "name": "Leto",
+      "pantheon": "atlantean",
+      "age": "classical",
+      "mythUnits": [
+        "at_automaton"
+      ],
+      "confidence": "high"
+    },
+    "oceanus": {
+      "name": "Oceanus",
+      "pantheon": "atlantean",
+      "age": "classical",
+      "mythUnits": [
+        "at_caladria",
+        "at_servant"
+      ],
+      "confidence": "high"
+    },
+    "hyperion": {
+      "name": "Hyperion",
+      "pantheon": "atlantean",
+      "age": "heroic",
+      "mythUnits": [
+        "at_nereid",
+        "at_satyr"
+      ],
+      "confidence": "high"
+    },
+    "rheia": {
+      "name": "Rheia",
+      "pantheon": "atlantean",
+      "age": "heroic",
+      "mythUnits": [
+        "at_behemoth"
+      ],
+      "confidence": "high"
+    },
+    "theia": {
+      "name": "Theia",
+      "pantheon": "atlantean",
+      "age": "heroic",
+      "mythUnits": [
+        "at_stymphalian_bird",
+        "at_dryad"
+      ],
+      "confidence": "high"
+    },
+    "helios": {
+      "name": "Helios",
+      "pantheon": "atlantean",
+      "age": "mythic",
+      "mythUnits": [
+        "at_argus"
+      ],
+      "confidence": "low"
+    },
+    "atlas": {
+      "name": "Atlas",
+      "pantheon": "atlantean",
+      "age": "mythic",
+      "mythUnits": [
+        "at_lampades"
+      ],
+      "confidence": "high"
+    },
+    "hekate": {
+      "name": "Hekate",
+      "pantheon": "atlantean",
+      "age": "mythic",
+      "mythUnits": [
+        "at_man_o_war"
+      ],
+      "confidence": "low"
+    },
+    "xuannu": {
+      "name": "Xuannü",
+      "pantheon": "chinese",
+      "age": "classical",
+      "mythUnits": [
+        "ch_qilin"
+      ],
+      "confidence": "high"
+    },
+    "chiyou": {
+      "name": "Chiyou",
+      "pantheon": "chinese",
+      "age": "classical",
+      "mythUnits": [
+        "ch_yazi"
+      ],
+      "confidence": "high"
+    },
+    "houtu": {
+      "name": "Houtu",
+      "pantheon": "chinese",
+      "age": "classical",
+      "mythUnits": [
+        "ch_baihu"
+      ],
+      "confidence": "low"
+    },
+    "goumang": {
+      "name": "Goumang",
+      "pantheon": "chinese",
+      "age": "heroic",
+      "mythUnits": [
+        "ch_taowu"
+      ],
+      "confidence": "high"
+    },
+    "nuba": {
+      "name": "Nüba",
+      "pantheon": "chinese",
+      "age": "heroic",
+      "mythUnits": [
+        "ch_taotie"
+      ],
+      "confidence": "high"
+    },
+    "rushou": {
+      "name": "Rushou",
+      "pantheon": "chinese",
+      "age": "heroic",
+      "mythUnits": [
+        "ch_qiongqi"
+      ],
+      "confidence": "low"
+    },
+    "gonggong": {
+      "name": "Gonggong",
+      "pantheon": "chinese",
+      "age": "mythic",
+      "mythUnits": [
+        "ch_qinglong"
+      ],
+      "confidence": "high"
+    },
+    "huangdi": {
+      "name": "Huangdi",
+      "pantheon": "chinese",
+      "age": "mythic",
+      "mythUnits": [
+        "ch_hundun"
+      ],
+      "confidence": "high"
+    },
+    "zhurong": {
+      "name": "Zhurong",
+      "pantheon": "chinese",
+      "age": "mythic",
+      "mythUnits": [
+        "ch_zhuque"
+      ],
+      "confidence": "high"
+    },
+    "ame_no_uzume": {
+      "name": "Ame-no-Uzume",
+      "pantheon": "japanese",
+      "age": "classical",
+      "mythUnits": [
+        "jp_yamabushi"
+      ],
+      "confidence": "low"
+    },
+    "minakatatomi": {
+      "name": "Minakatatomi",
+      "pantheon": "japanese",
+      "age": "classical",
+      "mythUnits": [
+        "jp_wanyudo"
+      ],
+      "confidence": "high"
+    },
+    "inari_okami": {
+      "name": "Inari Ōkami",
+      "pantheon": "japanese",
+      "age": "classical",
+      "mythUnits": [],
+      "confidence": "low"
+    },
+    "hachiman": {
+      "name": "Hachiman",
+      "pantheon": "japanese",
+      "age": "heroic",
+      "mythUnits": [
+        "jp_tengu"
+      ],
+      "confidence": "low"
+    },
+    "raijin": {
+      "name": "Raijin",
+      "pantheon": "japanese",
+      "age": "heroic",
+      "mythUnits": [
+        "jp_oni"
+      ],
+      "confidence": "low"
+    },
+    "fujin": {
+      "name": "Fūjin",
+      "pantheon": "japanese",
+      "age": "heroic",
+      "mythUnits": [
+        "jp_kamaitachi"
+      ],
+      "confidence": "low"
+    },
+    "okuninushi": {
+      "name": "Ōkuninushi",
+      "pantheon": "japanese",
+      "age": "mythic",
+      "mythUnits": [
+        "jp_umibozu"
+      ],
+      "confidence": "low"
+    },
+    "watatsumi": {
+      "name": "Watatsumi",
+      "pantheon": "japanese",
+      "age": "mythic",
+      "mythUnits": [
+        "jp_shinigami"
+      ],
+      "confidence": "high"
+    },
+    "takemikazuchi": {
+      "name": "Takemikazuchi",
+      "pantheon": "japanese",
+      "age": "mythic",
+      "mythUnits": [],
+      "confidence": "low"
+    },
+    "patecatl": {
+      "name": "Patecatl",
+      "pantheon": "aztec",
+      "age": "classical",
+      "mythUnits": [
+        "az_axolotl"
+      ],
+      "confidence": "low"
+    },
+    "malinalxochitl": {
+      "name": "Malinalxochitl",
+      "pantheon": "aztec",
+      "age": "classical",
+      "mythUnits": [],
+      "confidence": "low",
+      "_note": "Myth unit not yet confirmed by a reliable source."
+    },
+    "huehuecoyotl": {
+      "name": "Huehuecóyotl",
+      "pantheon": "aztec",
+      "age": "classical",
+      "mythUnits": [
+        "az_ahuizotl"
+      ],
+      "confidence": "low"
+    },
+    "coatlicue": {
+      "name": "Coatlicue",
+      "pantheon": "aztec",
+      "age": "heroic",
+      "mythUnits": [
+        "az_quinametzin"
+      ],
+      "confidence": "high"
+    },
+    "itzpapalotl": {
+      "name": "Itzpapalotl",
+      "pantheon": "aztec",
+      "age": "heroic",
+      "mythUnits": [
+        "az_obsidian_butterfly"
+      ],
+      "confidence": "high"
+    },
+    "coyolxauhqui": {
+      "name": "Coyolxauhqui",
+      "pantheon": "aztec",
+      "age": "heroic",
+      "mythUnits": [
+        "az_centzon_totochtin"
+      ],
+      "confidence": "low"
+    },
+    "tlaloc": {
+      "name": "Tlaloc",
+      "pantheon": "aztec",
+      "age": "mythic",
+      "mythUnits": [],
+      "confidence": "low"
+    },
+    "mictlantecuhtli": {
+      "name": "Mictlantecuhtli",
+      "pantheon": "aztec",
+      "age": "mythic",
+      "mythUnits": [
+        "az_tzitzimitl"
+      ],
+      "confidence": "high"
+    },
+    "xolotl": {
+      "name": "Xolotl",
+      "pantheon": "aztec",
+      "age": "mythic",
+      "mythUnits": [
+        "az_soul_guide"
+      ],
+      "confidence": "high"
+    }
+  },
+  "godMinorChoices": {
+    "zeus": {
+      "classical": [
+        "athena",
+        "hermes"
+      ],
+      "heroic": [
+        "apollo",
+        "dionysus"
+      ],
+      "mythic": [
+        "hera",
+        "hephaestus"
+      ]
+    },
+    "poseidon": {
+      "classical": [
+        "hermes",
+        "ares"
+      ],
+      "heroic": [
+        "aphrodite",
+        "dionysus"
+      ],
+      "mythic": [
+        "hephaestus",
+        "artemis"
+      ]
+    },
+    "hades": {
+      "classical": [
+        "athena",
+        "ares"
+      ],
+      "heroic": [
+        "aphrodite",
+        "apollo"
+      ],
+      "mythic": [
+        "hephaestus",
+        "artemis"
+      ]
+    },
+    "demeter": {
+      "classical": [
+        "ares",
+        "pan"
+      ],
+      "heroic": [
+        "aphrodite",
+        "hestia"
+      ],
+      "mythic": [
+        "hera",
+        "persephone"
+      ]
+    },
+    "ra": {
+      "classical": [
+        "bast",
+        "ptah"
+      ],
+      "heroic": [
+        "sobek",
+        "sekhmet"
+      ],
+      "mythic": [
+        "osiris",
+        "horus"
+      ]
+    },
+    "isis": {
+      "classical": [
+        "bast",
+        "anubis"
+      ],
+      "heroic": [
+        "sobek",
+        "nephthys"
+      ],
+      "mythic": [
+        "osiris",
+        "thoth"
+      ]
+    },
+    "set": {
+      "classical": [
+        "ptah",
+        "anubis"
+      ],
+      "heroic": [
+        "sekhmet",
+        "nephthys"
+      ],
+      "mythic": [
+        "horus",
+        "thoth"
+      ]
+    },
+    "odin": {
+      "classical": [
+        "freyja",
+        "heimdall"
+      ],
+      "heroic": [
+        "skadi",
+        "njord"
+      ],
+      "mythic": [
+        "baldr",
+        "tyr"
+      ]
+    },
+    "thor": {
+      "classical": [
+        "freyja",
+        "forseti"
+      ],
+      "heroic": [
+        "skadi",
+        "bragi"
+      ],
+      "mythic": [
+        "baldr",
+        "tyr"
+      ]
+    },
+    "loki": {
+      "classical": [
+        "forseti",
+        "heimdall"
+      ],
+      "heroic": [
+        "bragi",
+        "njord"
+      ],
+      "mythic": [
+        "tyr",
+        "hel"
+      ]
+    },
+    "freyr": {
+      "classical": [
+        "freyja",
+        "ullr"
+      ],
+      "heroic": [
+        "bragi",
+        "aegir"
+      ],
+      "mythic": [
+        "hel",
+        "vidar"
+      ]
+    },
+    "kronos": {
+      "classical": [
+        "prometheus",
+        "leto"
+      ],
+      "heroic": [
+        "hyperion",
+        "rheia"
+      ],
+      "mythic": [
+        "helios",
+        "atlas"
+      ]
+    },
+    "oranos": {
+      "classical": [
+        "prometheus",
+        "oceanus"
+      ],
+      "heroic": [
+        "hyperion",
+        "theia"
+      ],
+      "mythic": [
+        "helios",
+        "hekate"
+      ]
+    },
+    "gaia": {
+      "classical": [
+        "leto",
+        "oceanus"
+      ],
+      "heroic": [
+        "rheia",
+        "theia"
+      ],
+      "mythic": [
+        "atlas",
+        "hekate"
+      ]
+    },
+    "fuxi": {
+      "classical": [
+        "xuannu",
+        "chiyou"
+      ],
+      "heroic": [
+        "goumang",
+        "nuba"
+      ],
+      "mythic": [
+        "gonggong",
+        "huangdi"
+      ]
+    },
+    "nuwa": {
+      "classical": [
+        "xuannu",
+        "houtu"
+      ],
+      "heroic": [
+        "goumang",
+        "rushou"
+      ],
+      "mythic": [
+        "gonggong",
+        "zhurong"
+      ]
+    },
+    "shennong": {
+      "classical": [
+        "chiyou",
+        "houtu"
+      ],
+      "heroic": [
+        "nuba",
+        "rushou"
+      ],
+      "mythic": [
+        "huangdi",
+        "zhurong"
+      ]
+    },
+    "amaterasu": {
+      "classical": [
+        "ame_no_uzume",
+        "minakatatomi"
+      ],
+      "heroic": [
+        "hachiman",
+        "raijin"
+      ],
+      "mythic": [
+        "okuninushi",
+        "takemikazuchi"
+      ]
+    },
+    "tsukuyomi": {
+      "classical": [
+        "ame_no_uzume",
+        "inari_okami"
+      ],
+      "heroic": [
+        "hachiman",
+        "fujin"
+      ],
+      "mythic": [
+        "okuninushi",
+        "watatsumi"
+      ]
+    },
+    "susanoo": {
+      "classical": [
+        "minakatatomi",
+        "inari_okami"
+      ],
+      "heroic": [
+        "raijin",
+        "fujin"
+      ],
+      "mythic": [
+        "takemikazuchi",
+        "watatsumi"
+      ]
+    },
+    "quetzalcoatl": {
+      "classical": [
+        "patecatl",
+        "huehuecoyotl"
+      ],
+      "heroic": [
+        "coatlicue",
+        "coyolxauhqui"
+      ],
+      "mythic": [
+        "tlaloc",
+        "xolotl"
+      ]
+    },
+    "tezcatlipoca": {
+      "classical": [
+        "malinalxochitl",
+        "huehuecoyotl"
+      ],
+      "heroic": [
+        "itzpapalotl",
+        "coyolxauhqui"
+      ],
+      "mythic": [
+        "mictlantecuhtli",
+        "xolotl"
+      ]
+    },
+    "huitzilopochtli": {
+      "classical": [
+        "patecatl",
+        "malinalxochitl"
+      ],
+      "heroic": [
+        "coatlicue",
+        "itzpapalotl"
+      ],
+      "mythic": [
+        "tlaloc",
+        "mictlantecuhtli"
+      ]
+    }
+  }
+}
